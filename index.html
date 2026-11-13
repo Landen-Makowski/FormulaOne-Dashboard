@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+      name="description"
+      content="A Formula 1 race dashboard using OpenF1 and public weather data."
+    >
+
+    <meta name="author" content="Landen Makowski">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>OpenF1 Race Dashboard</title>
+  </head>
+
+  <body>
+
+    <header>
+      <h1>OpenF1 Race Dashboard</h1>
+      <p>
+        Explore Formula 1 race weekends, session information,
+        and weather conditions.
+      </p>
+    </header>
+
+    <main>
+
+      <section aria-labelledby="race-search-heading">
+        <h2 id="race-search-heading">Choose a Race</h2>
+
+        <form id="race-form">
+          <label for="race-select">Grand Prix:</label>
+
+          <select id="race-select" name="race">
+            <option value="">Select a race</option>
+          </select>
+
+          <button type="submit">View Race</button>
+        </form>
+      </section>
+
+      <section aria-labelledby="race-info-heading">
+        <h2 id="race-info-heading">Race Information</h2>
+
+        <div id="race-info">
+          <p>Select a race to view event information.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="weather-heading">
+        <h2 id="weather-heading">Weather</h2>
+
+        <div id="weather-info">
+          <p>Weather data will appear here.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>MI 349 Single Page App</p>
+    </footer>
+
+    <script src="utilities.js"></script>
+
+  </body>
+</html>
