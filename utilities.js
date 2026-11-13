@@ -1,30 +1,21 @@
 let meetings = [];
 
-async function getF1Sessions() {
+async function getF1Meetings() {
   const response = await fetch(
-    "https://api.openf1.org/v1/sessions?year=2025"
+    "https://api.openf1.org/v1/meetings?year=2025"
   );
 
   const data = await response.json();
 
+  meetings = data;
+
   const raceSelect = document.getElementById("race-select");
-
-  data.forEach(function (session) {
-    const alreadyAdded = meetings.some(function (meeting) {
-      return meeting.meeting_key === session.meeting_key;
-    });
-
-    if (!alreadyAdded) {
-      meetings.push(session);
-    }
-  });
 
   meetings.forEach(function (meeting) {
     const option = document.createElement("option");
 
     option.value = meeting.meeting_key;
-    option.textContent =
-      meeting.country_name + " - " + meeting.location;
+    option.textContent = meeting.meeting_name;
 
     raceSelect.appendChild(option);
   });
@@ -43,23 +34,45 @@ raceForm.addEventListener("submit", function (event) {
   });
 
   if (selectedRace) {
-  displayRaceInfo(selectedRace);
-  getWeather(selectedRace);
-}
+    displayRaceInfo(selectedRace);
+    getWeather(selectedRace);
+    getRaceWinner(selectedRace);
+  }
 });
 
 function displayRaceInfo(race) {
   const raceInfo = document.getElementById("race-info");
 
   raceInfo.innerHTML = `
-    <h3>${race.country_name} Grand Prix</h3>
-    <p><strong>Location:</strong> ${race.location}</p>
-    <p><strong>Circuit:</strong> ${race.circuit_short_name}</p>
-    <p><strong>Year:</strong> ${race.year}</p>
+    <h3>${race.meeting_name}</h3>
+
+    <img
+      src="${race.circuit_image}"
+      alt="Circuit layout for ${race.meeting_name}"
+      class="circuit-image"
+    >
+
+    <p>
+      <strong>Location:</strong>
+      ${race.location}, ${race.country_name}
+    </p>
+
+    <p>
+      <strong>Circuit:</strong>
+      ${race.circuit_short_name}
+    </p>
+
+    <p>
+      <strong>Circuit Type:</strong>
+      ${race.circuit_type}
+    </p>
+
+    <p>
+      <strong>Year:</strong>
+      ${race.year}
+    </p>
   `;
 }
-
-getF1Sessions();
 
 async function getWeather(race) {
   const searchName = race.location;
@@ -119,3 +132,75 @@ function displayWeather(weather) {
     </p>
   `;
 }
+
+async function getRaceWinner(race) {
+  const sessionsResponse = await fetch(
+    `https://api.openf1.org/v1/sessions?meeting_key=${race.meeting_key}`
+  );
+
+  const sessions = await sessionsResponse.json();
+
+  const raceSession = sessions.find(function (session) {
+    return session.session_name === "Race";
+  });
+
+  if (!raceSession) {
+    document.getElementById("winner-info").innerHTML =
+      "<p>Race winner information could not be found.</p>";
+    return;
+  }
+
+  const resultResponse = await fetch(
+    `https://api.openf1.org/v1/session_result?session_key=${raceSession.session_key}&position=1`
+  );
+
+  const results = await resultResponse.json();
+
+  if (results.length === 0) {
+    document.getElementById("winner-info").innerHTML =
+      "<p>Race winner information could not be found.</p>";
+    return;
+  }
+
+  const winner = results[0];
+
+  const driverResponse = await fetch(
+    `https://api.openf1.org/v1/drivers?session_key=${raceSession.session_key}&driver_number=${winner.driver_number}`
+  );
+
+  const drivers = await driverResponse.json();
+
+  if (drivers.length === 0) {
+    document.getElementById("winner-info").innerHTML =
+      "<p>Driver information could not be found.</p>";
+    return;
+  }
+
+  displayWinner(drivers[0]);
+}
+
+function displayWinner(driver) {
+  const winnerInfo = document.getElementById("winner-info");
+
+  winnerInfo.innerHTML = `
+    <h3>Race Winner</h3>
+
+    <img
+      src="${driver.headshot_url}"
+      alt="${driver.full_name}"
+      class="driver-image"
+    >
+
+    <p>
+      <strong>Driver:</strong>
+      ${driver.full_name}
+    </p>
+
+    <p>
+      <strong>Team:</strong>
+      ${driver.team_name}
+    </p>
+  `;
+}
+
+getF1Meetings();

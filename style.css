@@ -1,0 +1,181 @@
+:root {
+  --background: #111111;
+  --panel: #1c1c1c;
+  --panel-light: #262626;
+  --text: #ffffff;
+  --muted: #b8b8b8;
+  --accent: #e10600;
+  --border: #3a3a3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background-color: var(--panel);
+  border-bottom: 4px solid var(--accent);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.4rem;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+main {
+  width: min(100% - 2rem, 1200px);
+  margin: 2rem auto;
+}
+
+section {
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+section h2 {
+  margin-top: 0;
+  border-left: 5px solid var(--accent);
+  padding-left: 0.75rem;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+select,
+button {
+  font: inherit;
+  padding: 0.75rem;
+  border-radius: 6px;
+}
+
+select {
+  flex: 1;
+  min-width: 220px;
+  background-color: var(--panel-light);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+button {
+  background-color: var(--accent);
+  color: var(--text);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff1e16;
+}
+
+#race-info,
+#weather-info {
+  background-color: var(--panel-light);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+#race-info h3,
+#weather-info h3 {
+  margin-top: 0;
+}
+
+#race-info p,
+#weather-info p {
+  margin: 0.5rem 0;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 900px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  main section:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+main section {
+  height: 100%;
+}
+
+
+
+.circuit-image {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  margin: 1rem auto;
+  object-fit: contain;
+}
+
+#winner-info {
+  background-color: var(--panel-light);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.driver-image {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin: 1rem auto;
+  object-fit: contain;
+}
+
+#winner-info {
+  background-color: var(--panel-light);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.driver-image {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  margin: 1rem auto;
+  object-fit: contain;
+}
+
+#winner-info h3 {
+  margin-top: 0;
+}
+
+#winner-info p {
+  margin: 0.5rem 0;
+}

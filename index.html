@@ -15,56 +15,52 @@
 
     <title>OpenF1 Race Dashboard</title>
   </head>
-
   <body>
-
     <header>
       <h1>OpenF1 Race Dashboard</h1>
       <p>
         Explore Formula 1 race weekends, session information,
-        and weather conditions.
+        and weather conditions
       </p>
     </header>
-
     <main>
-
       <section aria-labelledby="race-search-heading">
         <h2 id="race-search-heading">Choose a Race</h2>
-
         <form id="race-form">
           <label for="race-select">Grand Prix:</label>
-
           <select id="race-select" name="race">
             <option value="">Select a race</option>
           </select>
-
           <button type="submit">View Race</button>
         </form>
       </section>
-
       <section aria-labelledby="race-info-heading">
         <h2 id="race-info-heading">Race Information</h2>
 
         <div id="race-info">
-          <p>Select a race to view event information.</p>
+            <p>Select a race to view event information.</p>
         </div>
-      </section>
+        </section>
 
-      <section aria-labelledby="weather-heading">
+        <section aria-labelledby="winner-heading">
+        <h2 id="winner-heading">Race Winner</h2>
+
+        <div id="winner-info">
+            <p>Select a race to view the winner.</p>
+        </div>
+        </section>
+
+        <section aria-labelledby="weather-heading">
         <h2 id="weather-heading">Weather</h2>
 
         <div id="weather-info">
-          <p>Weather data will appear here.</p>
+            <p>Weather data will appear here.</p>
         </div>
-      </section>
-
+    </section>
     </main>
-
     <footer>
-      <p>MI 349 Single Page App</p>
+      <p>Copyright &copy; 2026 Makowski<p>
     </footer>
-
     <script src="utilities.js"></script>
-
   </body>
 </html>

@@ -4,7 +4,7 @@ This project is a single-page web application that uses the OpenF1 API to displa
 
 The project will also use a weather API to provide weather information for race locations.
 
-Technologies
+# Technologies
 
 HTML
 
