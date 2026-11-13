@@ -134,7 +134,18 @@ main section {
   height: 100%;
 }
 
+header > p {
+  max-width: 900px;
+  margin: 0.75rem auto 0;
+  padding: 0 1rem;
+}
 
+.section-description {
+  text-align: center;
+  color: var(--muted);
+  max-width: 300px;
+  margin: 0 auto 1rem;
+}
 
 .circuit-image {
   display: block;
