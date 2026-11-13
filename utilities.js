@@ -1,3 +1,12 @@
+/*
+AI Disclosure:
+ChatGPT was used to help develop and refine portions of this JavaScript file.
+Assistance included organizing Fetch API requests, working with JSON data,
+adding event listeners, and troubleshooting syntax and logic errors.
+
+I reviewed, tested, and modified the code as part of the development process.
+*/
+
 let meetings = [];
 
 async function getF1Meetings() {
