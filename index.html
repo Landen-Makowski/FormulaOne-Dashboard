@@ -12,20 +12,24 @@
     <meta name="author" content="Landen Makowski">
 
     <link rel="stylesheet" href="style.css">
+
     <link
-    rel="icon"
-    type="image/png"
-    href="images/f1-racing.png"
+      rel="icon"
+      type="image/png"
+      href="images/f1-racing.png"
     >
 
     <title>OpenF1 Race Dashboard</title>
+
   </head>
   <body>
     <header>
       <h1>OpenF1 Race Dashboard</h1>
       <p>
-        Explore Formula 1 race weekends, session information,
-        and weather conditions
+        Explore the 2025 Formula 1 season by selecting a Grand Prix to view
+        the circuit, race winner, and current weather conditions at the race
+        location. Use the dashboard to revisit completed races and compare
+        race information with what conditions are like at the circuit today.
       </p>
     </header>
     <main>
@@ -40,31 +44,36 @@
         </form>
       </section>
       <section aria-labelledby="race-info-heading">
-        <h2 id="race-info-heading">Race Information</h2>
-
+        <h2 id="race-info-heading">Race Weekend</h2>
+        <p class="section-description">
+          Review the location, circuit, and event information for this
+          2025 Grand Prix.
+        </p>
         <div id="race-info">
-            <p>Select a race to view event information.</p>
+          <p>Select a race to view event information.</p>
         </div>
-        </section>
-
-        <section aria-labelledby="winner-heading">
-        <h2 id="winner-heading">Race Winner</h2>
-
+      </section>
+      <section aria-labelledby="winner-heading">
+        <h2 id="winner-heading">2025 Race Winner</h2>
+        <p class="section-description">
+          Review the driver and team that won this race in 2025.
+        </p>
         <div id="winner-info">
-            <p>Select a race to view the winner.</p>
+          <p>Select a race to view the winner.</p>
         </div>
-        </section>
-
-        <section aria-labelledby="weather-heading">
-        <h2 id="weather-heading">Weather</h2>
-
+      </section>
+      <section aria-labelledby="weather-heading">
+        <h2 id="weather-heading">Current Weather Conditions</h2>
+        <p class="section-description">
+          See what conditions are like at the race location today.
+        </p>
         <div id="weather-info">
-            <p>Weather data will appear here.</p>
+          <p>Weather data will appear here</p>
         </div>
-    </section>
+      </section>
     </main>
     <footer>
-      <p>Copyright &copy; 2026 Makowski<p>
+      <p>Copyright &copy; 2026 Makowski</p>
     </footer>
     <script src="utilities.js"></script>
   </body>
